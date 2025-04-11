@@ -24,8 +24,8 @@ df.select([col(c).isNull().alias(c) for c in df.columns]).show()
 df.groupBy("Amount").count().show()  # Distribución de las ventas
 df.groupBy("Boxes Shipped").count().show()  # Distribución de cajas enviadas
 
-# Limpiar los datos: Eliminar filas con valores nulos
-df_clean = df.dropna()
+# Limpiar los datos
+df_clean = df.fillna(0)  # Reemplazar valores nulos por 0
 
 # Transformar los datos: Crear una nueva columna "Income" (Ingreso)
 # Primero, necesitamos eliminar el símbolo '$' y convertir "Amount" a numérico
